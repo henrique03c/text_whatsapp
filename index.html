@@ -3,9 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Transformar Texto em Negrito</title>
+    <style>
+        div {
+            width: 300px;
+            height: 100px;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello</h1>
+
+<div id="meuDiv" contenteditable="true"></div>
+<button onclick="aplicarNegrito()">Negrito</button>
+
+<script>
+    function aplicarNegrito() {
+        var meuDiv = document.getElementById('meuDiv');
+
+        // Verifica se há alguma seleção de texto na div
+        var selecao = window.getSelection();
+        if (selecao.rangeCount > 0) {
+            // Obtém o nó da seleção
+            var range = selecao.getRangeAt(0);
+
+            // Cria um elemento <strong> e envolve a seleção com ele
+            var strongElement = document.createElement('strong');
+            range.surroundContents(strongElement);
+        } else {
+            alert('Selecione um texto na div antes de clicar em "Negrito".');
+        }
+    }
+</script>
+
 </body>
 </html>
